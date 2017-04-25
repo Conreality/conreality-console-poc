@@ -1,0 +1,8 @@
+# Mac OS X
+.DS_Store
+
+# Editor backup files
+*~
+
+# Qt QML cache files
+*.qmlc
