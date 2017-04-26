@@ -1,44 +1,38 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.1
-import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.1
+import QtQuick.Layouts 1.3
+import Qt.labs.settings 1.0
 
 ApplicationWindow {
+  id: window
   visible: true
   width: 1024
   height: 768
   title: qsTr("Conreality Console")
+  Material.theme: Material.Dark
+  Material.accent: Material.Purple
 
-  SwipeView {
-    id: swipeView
-    anchors.fill: parent
-    currentIndex: tabBar.currentIndex
+  header: ToolBar {
+    Material.foreground: "white"
 
-    Page {
-      Label {
-        text: qsTr("Home")
-        anchors.centerIn: parent
-      }
-    }
+    RowLayout {
+      spacing: 20
+      anchors.fill: parent
 
-    Page {
-      Label {
-        text: qsTr("Chat")
-        anchors.centerIn: parent
-      }
-    }
+      ToolButton {
+        onClicked: optionsMenu.open()
 
-    Page {
-      Label {
-        text: qsTr("Scene")
-        anchors.centerIn: parent
-      }
-    }
+        Menu {
+          id: optionsMenu
+          x: parent.width - width
+          transformOrigin: Menu.TopRight
 
-    Page {
-      Label {
-        text: qsTr("Map")
-        anchors.centerIn: parent
+          MenuItem {
+            text: "About"
+            onTriggered: aboutDialog.open()
+          }
+        }
       }
     }
   }
@@ -58,5 +52,20 @@ ApplicationWindow {
     TabButton {
       text: qsTr("Map")
     }
+  }
+
+  SwipeView {
+    id: swipeView
+    anchors.fill: parent
+    currentIndex: tabBar.currentIndex
+
+    HomePage {}
+    ChatPage {}
+    ScenePage {}
+    MapPage {}
+  }
+
+  AboutDialog {
+    id: aboutDialog
   }
 }
