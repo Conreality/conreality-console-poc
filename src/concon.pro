@@ -1,4 +1,4 @@
-QT += qml quick widgets
+QT += 3dcore 3drender 3dinput 3dlogic 3dextras qml quick 3dquick widgets
 
 CONFIG += c++11
 
