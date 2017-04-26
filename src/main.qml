@@ -45,6 +45,7 @@ ApplicationWindow {
 
       Labs.MenuItem {
         text: qsTr("About")
+        onTriggered: aboutDialog.open()
       }
     }
   }
