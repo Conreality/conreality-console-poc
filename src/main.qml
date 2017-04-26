@@ -19,6 +19,8 @@ ApplicationWindow {
 
       Labs.MenuItem {
         text: qsTr("Quit")
+        shortcut: StandardKey.Quit
+        onTriggered: Qt.quit()
       }
     }
 
