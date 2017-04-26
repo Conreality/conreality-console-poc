@@ -6,3 +6,6 @@
 
 # Qt QML cache files
 *.qmlc
+
+# Qt builds
+build-*
