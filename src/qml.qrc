@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>AboutDialog.qml</file>
+        <file>ChatPage.qml</file>
+        <file>HomePage.qml</file>
+        <file>MapPage.qml</file>
+        <file>ScenePage.qml</file>
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+    </qresource>
+</RCC>
