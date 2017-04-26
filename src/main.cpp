@@ -1,16 +1,16 @@
 /* This is free and unencumbered software released into the public domain. */
 
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 
 int
 main(int argc, char* argv[]) {
-  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-  QGuiApplication app(argc, argv);
+  QApplication app(argc, argv);
 
   QQmlApplicationEngine engine;
-  engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+  engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
   return app.exec();
 }
