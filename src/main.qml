@@ -1,6 +1,5 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.1
-import QtQuick.Controls.Material 2.1
 import QtQuick.Layouts 1.3
 import Qt.labs.platform 1.0 as Labs
 
@@ -10,8 +9,6 @@ ApplicationWindow {
   width: 1024
   height: 768
   title: qsTr("Conreality Console")
-  Material.theme: Material.Dark
-  Material.accent: Material.Purple
 
   Labs.MenuBar {
     id: menuBar
@@ -51,7 +48,7 @@ ApplicationWindow {
   }
 
   header: ToolBar {
-    Material.foreground: "white"
+    //Material.foreground: "white"
 
     RowLayout {
       spacing: 20
