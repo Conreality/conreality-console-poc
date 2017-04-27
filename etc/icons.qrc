@@ -1,4 +1,5 @@
 <RCC>
     <qresource prefix="/">
+        <file>icons/google/ic_face_white_48px.svg</file>
     </qresource>
 </RCC>
