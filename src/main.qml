@@ -84,6 +84,9 @@ ApplicationWindow {
       text: qsTr("Chat")
     }
     TabButton {
+      text: qsTr("Database")
+    }
+    TabButton {
       text: qsTr("Scene")
     }
     TabButton {
@@ -98,6 +101,7 @@ ApplicationWindow {
 
     HomeScreen {}
     ChatScreen {}
+    DatabaseScreen {}
     SceneScreen {}
     MapScreen {}
   }
