@@ -6,7 +6,7 @@ import Qt.labs.platform 1.0 as Labs
 ApplicationWindow {
   id: window
   visible: true
-  width: 1024
+  width: 1280
   height: 768
   title: qsTr("Conreality Console")
 
