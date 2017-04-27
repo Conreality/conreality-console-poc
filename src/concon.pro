@@ -1,3 +1,5 @@
+TEMPLATE = app
+
 QT += 3dcore 3drender 3dinput 3dlogic 3dextras
 QT += qml quick 3dquick
 QT += network positioning location
@@ -7,7 +9,7 @@ CONFIG += c++11
 
 SOURCES += main.cpp
 
-RESOURCES += concon.qrc
+RESOURCES += concon.qrc ../etc/icons.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
