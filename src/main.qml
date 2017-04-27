@@ -96,10 +96,10 @@ ApplicationWindow {
     anchors.fill: parent
     currentIndex: tabBar.currentIndex
 
-    HomePage {}
-    ChatPage {}
-    ScenePage {}
-    MapPage {}
+    HomeScreen {}
+    ChatScreen {}
+    SceneScreen {}
+    MapScreen {}
   }
 
   AboutDialog {
