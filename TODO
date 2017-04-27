@@ -1,0 +1,38 @@
+Knowledge Base
+==============
+
+Network Engine
+==============
+
+- Integrate the Erlang distribution protocol, with a clean C++11 wrapper.
+
+Scripting Engine
+================
+
+- Integrate the Lua 5.3 runtime, with a clean C++11 wrapper.
+
+Home Screen
+===========
+
+Chat Screen
+===========
+
+Database Screen
+===============
+
+Scene Screen
+============
+
+Map Screen
+==========
+
+- Don't prompt for position source permission until on screen.
+- Display player and asset markers as map objects:
+  https://doc.qt.io/qt-5/qml-qtlocation-map.html#addMapItem-method
+- Zoom to fit all markers when map is initially displayed:
+  https://doc.qt.io/qt-5/qml-qtlocation-map.html#fitViewportToMapItems-method
+- Implement error handling for map plugin errors:
+  https://doc.qt.io/qt-5/qml-qtlocation-map.html#error-prop
+- Indicate off-the-grid markers with special colors:
+  https://doc.qt.io/qt-5/qtpositioning-qmlmodule.html
+- Display assets' navigation plans as waypoints.

@@ -5,6 +5,7 @@
         <file>DatabaseScreen.qml</file>
         <file>HomeScreen.qml</file>
         <file>MapScreen.qml</file>
+        <file>NavButton.qml</file>
         <file>Scene.qml</file>
         <file>SceneScreen.qml</file>
         <file>main.qml</file>

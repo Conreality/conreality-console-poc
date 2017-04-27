@@ -50,6 +50,7 @@ ApplicationWindow {
     }
   }
 
+/*
   header: ToolBar {
     //Material.foreground: "white"
 
@@ -73,37 +74,94 @@ ApplicationWindow {
       }
     }
   }
+*/
 
-  footer: TabBar {
-    id: tabBar
-    currentIndex: swipeView.currentIndex
-    TabButton {
-      text: qsTr("Home")
-    }
-    TabButton {
-      text: qsTr("Chat")
-    }
-    TabButton {
-      text: qsTr("Database")
-    }
-    TabButton {
-      text: qsTr("Scene")
-    }
-    TabButton {
-      text: qsTr("Map")
-    }
-  }
-
-  SwipeView {
-    id: swipeView
+  RowLayout {
     anchors.fill: parent
-    currentIndex: tabBar.currentIndex
+    spacing: 0
 
-    HomeScreen {}
-    ChatScreen {}
-    DatabaseScreen {}
-    SceneScreen {}
-    MapScreen {}
+    Frame {
+      id: lhs
+      anchors.left: parent.left
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      width: 72
+
+      ButtonGroup {
+        buttons: lhsColumn.children
+        onClicked: {
+          //console.log("clicked:", ) // TODO
+        }
+      }
+
+      ColumnLayout {
+        id: lhsColumn
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        NavButton {
+          icon: "qrc:/icons/google/ic_face_white_48px.svg"
+          text: qsTr("Home")
+          onClicked: rhs.currentIndex = 0
+        }
+
+        NavButton {
+          icon: "qrc:/icons/google/ic_face_white_48px.svg"
+          text: qsTr("Chat")
+          onClicked: rhs.currentIndex = 1
+        }
+
+        NavButton {
+          icon: "qrc:/icons/google/ic_face_white_48px.svg"
+          text: qsTr("Database")
+          onClicked: rhs.currentIndex = 2
+        }
+
+        NavButton {
+          icon: "qrc:/icons/google/ic_face_white_48px.svg"
+          text: qsTr("Map")
+          onClicked: rhs.currentIndex = 3
+        }
+
+        NavButton {
+          icon: "qrc:/icons/google/ic_face_white_48px.svg"
+          text: qsTr("Scene")
+          onClicked: rhs.currentIndex = 3 // FIXME
+        }
+      }
+    }
+
+    StackLayout {
+      id: rhs
+      anchors.left: lhs.right
+      anchors.right: parent.right
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      currentIndex: 0
+
+      HomeScreen {
+        id: homeScreen
+      }
+
+      ChatScreen {
+        id: chatScreen
+      }
+
+      DatabaseScreen {
+        id: databaseScreen
+      }
+
+      MapScreen {
+        id: mapScreen
+      }
+
+/*
+      // FIXME: flickering?
+      SceneScreen {
+        id: sceneScreen
+      }
+*/
+    }
   }
 
   AboutDialog {
