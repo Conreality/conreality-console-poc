@@ -126,7 +126,7 @@ ApplicationWindow {
         NavButton {
           icon: "qrc:/icons/google/ic_face_white_48px.svg"
           text: qsTr("Scene")
-          onClicked: rhs.currentIndex = 3 // FIXME
+          onClicked: rhs.currentIndex = 4
         }
       }
     }
@@ -137,7 +137,7 @@ ApplicationWindow {
       anchors.right: parent.right
       anchors.top: parent.top
       anchors.bottom: parent.bottom
-      currentIndex: 0
+      currentIndex: 4
 
       HomeScreen {
         id: homeScreen
@@ -155,12 +155,12 @@ ApplicationWindow {
         id: mapScreen
       }
 
-/*
       // FIXME: flickering?
+      // See: https://bugreports.qt.io/browse/QTBUG-47992
+      // See: https://bugreports.qt.io/browse/QTBUG-53433
       SceneScreen {
         id: sceneScreen
       }
-*/
     }
   }
 
