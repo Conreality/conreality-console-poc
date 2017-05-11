@@ -100,31 +100,31 @@ ApplicationWindow {
         anchors.horizontalCenter: parent.horizontalCenter
 
         NavButton {
-          icon: "qrc:/icons/google/ic_face_white_48px.svg"
+          icon: "qrc:/icons/google/ic_dashboard_white_48px.svg"
           text: qsTr("Home")
           onClicked: rhs.currentIndex = 0
         }
 
         NavButton {
-          icon: "qrc:/icons/google/ic_face_white_48px.svg"
+          icon: "qrc:/icons/google/ic_chat_white_48px.svg"
           text: qsTr("Chat")
           onClicked: rhs.currentIndex = 1
         }
 
         NavButton {
-          icon: "qrc:/icons/google/ic_face_white_48px.svg"
+          icon: "qrc:/icons/google/ic_settings_white_48px.svg"
           text: qsTr("Database")
           onClicked: rhs.currentIndex = 2
         }
 
         NavButton {
-          icon: "qrc:/icons/google/ic_face_white_48px.svg"
+          icon: "qrc:/icons/google/ic_map_white_48px.svg"
           text: qsTr("Map")
           onClicked: rhs.currentIndex = 3
         }
 
         NavButton {
-          icon: "qrc:/icons/google/ic_face_white_48px.svg"
+          icon: "qrc:/icons/google/ic_3d_rotation_white_48px.svg"
           text: qsTr("Scene")
           onClicked: rhs.currentIndex = 4
         }
