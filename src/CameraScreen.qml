@@ -23,7 +23,7 @@ Page {
     Frame {
       id: feedFrame
       Layout.minimumWidth: 160
-      Layout.preferredWidth: parent.width * 0.25
+      Layout.preferredWidth: parent.width * 0.20
       Layout.fillHeight: true
 
       Rectangle { // TODO

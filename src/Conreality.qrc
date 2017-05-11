@@ -7,6 +7,7 @@
         <file>HomeScreen.qml</file>
         <file>MapScreen.qml</file>
         <file>NavButton.qml</file>
+        <file>PlayerListView.qml</file>
         <file>Scene.qml</file>
         <file>SceneScreen.qml</file>
         <file>main.qml</file>

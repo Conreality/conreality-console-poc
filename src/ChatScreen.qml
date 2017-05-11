@@ -56,12 +56,12 @@ Page {
     Frame {
       id: participantFrame
       Layout.minimumWidth: 160
-      Layout.preferredWidth: parent.width * 0.25
+      Layout.preferredWidth: parent.width * 0.20
       Layout.fillHeight: true
 
-      Rectangle { // TODO
+      PlayerListView {
         anchors.fill: parent
-        color: "blue"
+        id: listView
       }
     }
   }
