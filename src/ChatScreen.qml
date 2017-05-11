@@ -16,7 +16,6 @@ Page {
 
       ColumnLayout {
         anchors.fill: parent
-        spacing: 0
 
         Rectangle { // TODO
           Layout.fillWidth: true
@@ -24,12 +23,19 @@ Page {
           color: "red"
         }
 
-        Rectangle { // TODO
+        Flickable {
           Layout.fillWidth: true
-          Layout.minimumHeight: 80
-          Layout.maximumHeight: 80
-          Layout.preferredHeight: 80
-          color: "green"
+          Layout.minimumHeight: 80   // TODO: one line of text
+          Layout.preferredHeight: 80 // TODO: two lines of text
+          Layout.maximumHeight: 80   // TODO: three lines of text
+
+          TextArea.flickable: TextArea {
+            id: messageField
+            placeholderText: qsTr("Type your message here")
+            wrapMode: TextArea.Wrap
+          }
+
+          ScrollBar.vertical: ScrollBar { }
         }
       }
     }
