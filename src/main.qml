@@ -118,15 +118,21 @@ ApplicationWindow {
         }
 
         NavButton {
+          icon: "qrc:/icons/google/ic_linked_camera_white_48px.svg"
+          text: qsTr("Camera")
+          onClicked: rhs.currentIndex = 3
+        }
+
+        NavButton {
           icon: "qrc:/icons/google/ic_map_white_48px.svg"
           text: qsTr("Map")
-          onClicked: rhs.currentIndex = 3
+          onClicked: rhs.currentIndex = 4
         }
 
         NavButton {
           icon: "qrc:/icons/google/ic_3d_rotation_white_48px.svg"
           text: qsTr("Scene")
-          onClicked: rhs.currentIndex = 4
+          onClicked: rhs.currentIndex = 5
         }
       }
     }
@@ -137,7 +143,7 @@ ApplicationWindow {
       anchors.right: parent.right
       anchors.top: parent.top
       anchors.bottom: parent.bottom
-      currentIndex: 4
+      currentIndex: 5
 
       HomeScreen {
         id: homeScreen
@@ -149,6 +155,10 @@ ApplicationWindow {
 
       DatabaseScreen {
         id: databaseScreen
+      }
+
+      CameraScreen {
+        id: cameraScreen
       }
 
       MapScreen {
