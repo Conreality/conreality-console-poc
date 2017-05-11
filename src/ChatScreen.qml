@@ -22,7 +22,8 @@ Page {
 
     Frame {
       id: participantFrame
-      Layout.preferredWidth: 320
+      Layout.minimumWidth: 160
+      Layout.preferredWidth: parent.width * 0.25
       Layout.fillHeight: true
 
       Rectangle { // TODO

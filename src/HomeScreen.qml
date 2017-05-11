@@ -23,7 +23,8 @@ Page {
     Frame {
       id: eventFrame
       Layout.fillWidth: true
-      Layout.preferredHeight: 320
+      Layout.minimumHeight: 160
+      Layout.preferredHeight: parent.height * 0.33
 
       Rectangle { // TODO
         anchors.fill: parent
