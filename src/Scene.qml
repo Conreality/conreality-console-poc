@@ -12,7 +12,7 @@ Rectangle {
   id: scene
   anchors.fill: parent
   anchors.margins: 0
-  color: "darkRed" // TODO
+  color: "lightSteelBlue"
 
   transform: Rotation {
     id: sceneRotation
