@@ -14,9 +14,23 @@ Page {
       Layout.fillWidth: true
       Layout.fillHeight: true
 
-      Rectangle { // TODO
+      ColumnLayout {
         anchors.fill: parent
-        color: "blue"
+        spacing: 0
+
+        Rectangle { // TODO
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          color: "red"
+        }
+
+        Rectangle { // TODO
+          Layout.fillWidth: true
+          Layout.minimumHeight: 80
+          Layout.maximumHeight: 80
+          Layout.preferredHeight: 80
+          color: "green"
+        }
       }
     }
 
@@ -28,7 +42,7 @@ Page {
 
       Rectangle { // TODO
         anchors.fill: parent
-        color: "red"
+        color: "blue"
       }
     }
   }
