@@ -1,10 +1,14 @@
 <RCC>
     <qresource prefix="/">
         <file>icons/google/ic_3d_rotation_white_48px.svg</file>
+        <file>icons/google/ic_camera_white_48px.svg</file>
         <file>icons/google/ic_chat_white_48px.svg</file>
         <file>icons/google/ic_dashboard_white_48px.svg</file>
         <file>icons/google/ic_face_white_48px.svg</file>
+        <file>icons/google/ic_linked_camera_white_48px.svg</file>
         <file>icons/google/ic_map_white_48px.svg</file>
+        <file>icons/google/ic_photo_camera_white_48px.svg</file>
         <file>icons/google/ic_settings_white_48px.svg</file>
+        <file>icons/google/ic_switch_camera_white_48px.svg</file>
     </qresource>
 </RCC>
