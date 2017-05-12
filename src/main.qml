@@ -97,42 +97,57 @@ ApplicationWindow {
       ColumnLayout {
         id: lhsColumn
         anchors.top: parent.top
+        anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
 
         NavButton {
-          icon: "qrc:/icons/google/ic_dashboard_white_48px.svg"
           text: qsTr("Home")
+          icon: "qrc:/icons/google/ic_dashboard_white_48px.svg"
           onClicked: rhs.currentIndex = 0
         }
 
         NavButton {
-          icon: "qrc:/icons/google/ic_chat_white_48px.svg"
           text: qsTr("Chat")
+          icon: "qrc:/icons/google/ic_chat_white_48px.svg"
           onClicked: rhs.currentIndex = 1
         }
 
         NavButton {
-          icon: "qrc:/icons/google/ic_settings_white_48px.svg"
           text: qsTr("Database")
+          icon: "qrc:/icons/google/ic_settings_white_48px.svg"
           onClicked: rhs.currentIndex = 2
         }
 
         NavButton {
-          icon: "qrc:/icons/google/ic_linked_camera_white_48px.svg"
           text: qsTr("Camera")
+          icon: "qrc:/icons/google/ic_linked_camera_white_48px.svg"
           onClicked: rhs.currentIndex = 3
         }
 
         NavButton {
-          icon: "qrc:/icons/google/ic_map_white_48px.svg"
           text: qsTr("Map")
+          icon: "qrc:/icons/google/ic_map_white_48px.svg"
           onClicked: rhs.currentIndex = 4
         }
 
         NavButton {
-          icon: "qrc:/icons/google/ic_3d_rotation_white_48px.svg"
           text: qsTr("Scene")
+          icon: "qrc:/icons/google/ic_3d_rotation_white_48px.svg"
           onClicked: rhs.currentIndex = 5
+        }
+
+        Item {
+          Layout.fillHeight: true
+        }
+
+        RoundButton {
+          text: qsTr("Audio")
+          contentItem: Image {
+            source: "qrc:/icons/google/ic_mic_off_white_48px.svg"
+            sourceSize: Qt.size(48, 48)
+            width: 48; height: 48
+          }
+          //onClicked: rhs.currentIndex = 6
         }
       }
     }
