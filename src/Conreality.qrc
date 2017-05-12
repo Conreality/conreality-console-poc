@@ -2,7 +2,7 @@
     <qresource prefix="/">
         <file>AboutDialog.qml</file>
         <file>CameraScreen.qml</file>
-        <file>ChatInputForm.qml</file>
+        <file>ChatInputPane.qml</file>
         <file>ChatMessageView.qml</file>
         <file>ChatScreen.qml</file>
         <file>DatabaseScreen.qml</file>

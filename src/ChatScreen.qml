@@ -5,12 +5,10 @@ import QtQuick.Layouts 1.3
 Page {
 
   RowLayout {
-    id: chatLayout
     anchors.fill: parent
     spacing: 0
 
     Frame {
-      id: messageFrame
       Layout.fillWidth: true
       Layout.fillHeight: true
 
@@ -18,11 +16,16 @@ Page {
         anchors.fill: parent
 
         ChatMessageView {
+          id: messageView
+
           Layout.fillWidth: true
           Layout.fillHeight: true
+          Layout.margins: inputPane.leftPadding
         }
 
-        ChatInputForm {
+        ChatInputPane {
+          id: inputPane
+
           Layout.fillWidth: true
           Layout.minimumHeight: 80   // TODO: one line of text
           Layout.preferredHeight: 80 // TODO: two lines of text
@@ -32,14 +35,14 @@ Page {
     }
 
     Frame {
-      id: participantFrame
       Layout.minimumWidth: 160
       Layout.preferredWidth: parent.width * 0.20
       Layout.fillHeight: true
 
       PlayerListView {
-        anchors.fill: parent
         id: listView
+
+        anchors.fill: parent
       }
     }
   }
