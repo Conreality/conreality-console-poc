@@ -141,13 +141,18 @@ ApplicationWindow {
         }
 
         RoundButton {
-          text: qsTr("Audio")
+          id: micButton
+          property bool micEnabled: false
+          text: qsTr("Voice")
           contentItem: Image {
-            source: "qrc:/icons/google/ic_mic_off_white_48px.svg"
+            source: micButton.micEnabled ?
+                      "qrc:/icons/google/ic_mic_white_48px.svg" :
+                      "qrc:/icons/google/ic_mic_off_white_48px.svg"
             sourceSize: Qt.size(48, 48)
             width: 48; height: 48
           }
-          //onClicked: rhs.currentIndex = 6
+          highlighted: true
+          onClicked: micButton.micEnabled = !micButton.micEnabled
         }
       }
     }
