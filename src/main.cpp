@@ -1,10 +1,13 @@
 /* This is free and unencumbered software released into the public domain. */
 
+#include <QtGlobal> /* for qUtf8Printable() */
 #include <QApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include <QSqlDatabase>
 #include <QSqlError>
-#include <QtGlobal> /* for qUtf8Printable() */
+
+#include "TableModel.h"
 
 int
 main(int argc, char* argv[]) {
@@ -12,7 +15,6 @@ main(int argc, char* argv[]) {
 
   QApplication app(argc, argv);
 
-#if 1
   QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
   db.setHostName("localhost");
   db.setPort(5432);
@@ -21,9 +23,13 @@ main(int argc, char* argv[]) {
     qFatal("PostgreSQL: %s.", qUtf8Printable(error.text()));
     return -1;
   }
-#endif
 
   QQmlApplicationEngine engine;
+  auto rootContext = engine.rootContext();
+
+  TableModel playerModel{"player"};
+  rootContext->setContextProperty("playerModel", &playerModel);
+
   engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
   if (engine.rootObjects().isEmpty()) {
     return -1;

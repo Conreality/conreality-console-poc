@@ -12,9 +12,9 @@ ListView {
   rightMargin: 0
   spacing: 4
 
-  model: ["Alice", "Bob", "Charlie", "Dave"] // TODO
+  model: playerModel
   delegate: ItemDelegate {
-    text: modelData
+    text: model.name
     width: listView.width - listView.leftMargin - listView.rightMargin
     height: avatar.implicitHeight
     leftPadding: avatar.implicitWidth + 16
