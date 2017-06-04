@@ -4,6 +4,7 @@ QT += 3dcore 3drender 3dinput 3dlogic 3dextras
 QT += qml quick 3dquick
 QT += network positioning location
 QT += widgets
+QT += sql
 
 CONFIG += c++11
 
