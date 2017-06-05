@@ -6,7 +6,7 @@ CREATE TABLE public.message (
   -- The message's timestamp (in Zulu time).
   timestamp timestamp WITHOUT TIME ZONE NOT NULL DEFAULT (now() AT TIME ZONE 'UTC'),
   -- The sender of the message (a player or asset; a zero UUID indicates the system).
-  sender    uuid NOT NULL,
+  sender    uuid NOT NULL REFERENCES public.object ON DELETE CASCADE,
   -- The message's contents as text.
   text      text NULL,
   -- The message's contents as audio.

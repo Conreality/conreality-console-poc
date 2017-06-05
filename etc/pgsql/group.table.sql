@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS public.group RESTRICT;
+DROP TABLE IF EXISTS public.group CASCADE;
 
 CREATE TABLE public.group (
   -- The group's unique identifier.

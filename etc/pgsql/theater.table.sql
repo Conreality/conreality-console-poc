@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS public.theater RESTRICT;
+DROP TABLE IF EXISTS public.theater CASCADE;
 
 CREATE TABLE public.theater (
   -- The theater's unique identifier.

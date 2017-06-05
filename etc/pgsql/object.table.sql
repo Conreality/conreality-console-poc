@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS public.object RESTRICT;
+DROP TABLE IF EXISTS public.object CASCADE;
 
 DROP TYPE IF EXISTS public.object_type RESTRICT;
 
@@ -12,9 +12,9 @@ CREATE TABLE public.object (
   -- The object's unique identifier.
   uuid        uuid NOT NULL PRIMARY KEY,
   -- The theater that the object is located in.
-  theater     uuid NOT NULL,
+  theater     uuid NOT NULL REFERENCES public.theater ON DELETE CASCADE,
   -- The group, if any, that the object is located in.
-  "group"     uuid NULL,
+  "group"     uuid NULL REFERENCES public.group ON DELETE SET NULL,
   -- The object's type.
   type        object_type NULL,
   -- The object's designated label.
