@@ -5,7 +5,8 @@ DROP TYPE IF EXISTS public.object_type RESTRICT;
 CREATE TYPE public.object_type AS ENUM (
   'asset',
   'camera',
-  'player'
+  'player',
+  'target'
 );
 
 CREATE TABLE public.object (
