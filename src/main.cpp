@@ -27,7 +27,7 @@ main(int argc, char* argv[]) {
   QQmlApplicationEngine engine;
   auto rootContext = engine.rootContext();
 
-  TableModel playerModel{"player"};
+  TableModel playerModel{"public.object_player"};
   rootContext->setContextProperty("playerModel", &playerModel);
 
   engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
