@@ -20,8 +20,8 @@ CREATE TABLE public.object (
   type        object_type NULL,
   -- The object's designated label.
   label       varchar(31) NULL CHECK (label <> ''),
-  -- The object's current position (as 2D coordinates relative to its theater).
-  position    point NULL,
+  -- The object's current position (as 3D coordinates relative to its theater).
+  position    geometry(POINTZ,4326) NULL,
   -- The object's current orientation (in radians relative to north).
   orientation real NULL,
   -- The object's estimated mass (in kilograms).

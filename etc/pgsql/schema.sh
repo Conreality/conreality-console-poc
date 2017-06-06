@@ -1,5 +1,5 @@
 #!/bin/sh
-cat extensions.sql;    echo
+#cat extensions.sql;    echo
 
 # dependency order:
 cat theater.table.sql; echo

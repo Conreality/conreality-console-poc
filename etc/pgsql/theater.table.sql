@@ -6,5 +6,5 @@ CREATE TABLE public.theater (
   -- The theater's designated label.
   label    varchar(31) NULL CHECK (label <> ''),
   -- The theater's origin location (as GPS coordinates).
-  location point NULL
+  location geography(POINT,4326) NULL
 );
