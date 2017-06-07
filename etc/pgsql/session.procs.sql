@@ -1,13 +1,14 @@
 DROP FUNCTION IF EXISTS public.session_start() RESTRICT;
 DROP FUNCTION IF EXISTS public.session_terminate() RESTRICT;
 
-CREATE FUNCTION public.session_start() RETURNS bigint AS $$
-  -- TODO: session_user
-  -- TODO: inet_client_addr()
-  return 0
-$$ LANGUAGE pllua VOLATILE PARALLEL UNSAFE;
+CREATE FUNCTION public.session_start() RETURNS void AS $$
+  UPDATE public.player
+    SET ip_addr = inet_client_addr()
+    WHERE uuid = session_user::uuid;
+$$ LANGUAGE sql VOLATILE PARALLEL UNSAFE;
 
 CREATE FUNCTION public.session_terminate() RETURNS void AS $$
-  -- TODO
-  return nil
-$$ LANGUAGE pllua VOLATILE PARALLEL UNSAFE;
+  UPDATE public.player
+    SET ip_addr = NULL
+    WHERE uuid = session_user::uuid;
+$$ LANGUAGE sql VOLATILE PARALLEL UNSAFE;
