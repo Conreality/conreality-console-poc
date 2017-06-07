@@ -1,3 +1,6 @@
+-- Enable PL/Lua
+CREATE EXTENSION pllua;
+
 -- Enable PostGIS (includes raster)
 CREATE EXTENSION postgis;
 
