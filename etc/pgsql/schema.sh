@@ -5,6 +5,7 @@
 cat theater.table.sql; echo
 cat group.table.sql;   echo
 cat object.table.sql;  echo
+cat object.procs.sql;  echo
 
 # alphabetical order:
 cat asset.table.sql;   echo
