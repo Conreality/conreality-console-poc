@@ -39,7 +39,9 @@ main(int argc, char* argv[]) {
   }
 
   execute_or_die("SELECT public.session_start()");
-  app.connect(&app, &QApplication::aboutToQuit, [] {
+  app.connect(&app, &QApplication::aboutToQuit, [&db] {
+    db.driver()->unsubscribeFromNotification("message");
+    db.driver()->unsubscribeFromNotification("event");
     execute_or_die("SELECT public.session_terminate()");
   });
 
