@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS public.asset RESTRICT;
 
 CREATE TABLE public.asset (
   -- The asset's unique identifier.
-  uuid     uuid NOT NULL PRIMARY KEY,
+  uuid     uuid NOT NULL PRIMARY KEY REFERENCES public.object ON DELETE CASCADE,
   -- The asset's nickname.
   nick     varchar(31) NOT NULL CHECK (nick <> '') UNIQUE,
   -- The asset's full name.

@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS public.camera RESTRICT;
 
 CREATE TABLE public.camera (
   -- The camera's unique identifier.
-  uuid       uuid NOT NULL PRIMARY KEY,
+  uuid       uuid NOT NULL PRIMARY KEY REFERENCES public.object ON DELETE CASCADE,
   -- The camera's resolution (in 2D pixels).
   resolution point NULL,
   -- The camera's image format.

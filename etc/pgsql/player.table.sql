@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS public.player RESTRICT;
 
 CREATE TABLE public.player (
   -- The player's unique identifier.
-  uuid     uuid NOT NULL PRIMARY KEY,
+  uuid     uuid NOT NULL PRIMARY KEY REFERENCES public.object ON DELETE CASCADE,
   -- The player's nickname.
   nick     varchar(31) NOT NULL CHECK (nick <> '') UNIQUE,
   -- The player's full name.
