@@ -6,6 +6,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QSqlDatabase>
+#include <QSqlDriver>
 #include <QSqlError>
 #include <QSqlQuery>
 
@@ -38,9 +39,19 @@ main(int argc, char* argv[]) {
   }
 
   execute_or_die("SELECT public.session_start()");
-  app.connect(&app, &QApplication::aboutToQuit, []{
+  app.connect(&app, &QApplication::aboutToQuit, [] {
     execute_or_die("SELECT public.session_terminate()");
   });
+
+  app.connect(db.driver(),
+    static_cast<void(QSqlDriver::*)(const QString&, QSqlDriver::NotificationSource, const QVariant&)>(&QSqlDriver::notification),
+    [](const QString& name, QSqlDriver::NotificationSource /*source*/, const QVariant& payload) {
+
+    qDebug("NOTIFY %s, %s", qUtf8Printable(name), qUtf8Printable(payload.toString()));
+    // TODO
+  });
+  db.driver()->subscribeToNotification("event");
+  db.driver()->subscribeToNotification("message");
 
   QQmlApplicationEngine engine;
   auto rootContext = engine.rootContext();
