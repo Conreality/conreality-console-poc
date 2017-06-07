@@ -9,4 +9,4 @@ CREATE FUNCTION public.event_send(event_subject text,
   local event_id = result[1].id -- an int64
   server.execute("NOTIFY event, '" .. tostring(event_id) .. "'", false);
   return event_id;
-$$ LANGUAGE pllua;
+$$ LANGUAGE pllua VOLATILE PARALLEL UNSAFE;
