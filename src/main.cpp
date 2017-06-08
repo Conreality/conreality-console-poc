@@ -10,8 +10,10 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
+#include "CameraController.h"
 #include "ChatController.h"
-#include "TableModel.h"
+#include "EventController.h"
+#include "PlayerController.h"
 
 static void
 execute_or_die(const char* const sql) {
@@ -59,11 +61,17 @@ main(int argc, char* argv[]) {
   QQmlApplicationEngine engine;
   auto rootContext = engine.rootContext();
 
-  TableModel playerModel{"public.object_player"};
-  rootContext->setContextProperty("playerModel", &playerModel);
+  CameraController cameras;
+  rootContext->setContextProperty("cameras", &cameras);
 
   ChatController chat;
   rootContext->setContextProperty("chat", &chat);
+
+  EventController events;
+  rootContext->setContextProperty("events", &events);
+
+  PlayerController players;
+  rootContext->setContextProperty("players", &players);
 
   engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
   if (engine.rootObjects().isEmpty()) {

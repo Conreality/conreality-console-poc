@@ -5,7 +5,7 @@
 #include <QSqlDatabase>
 #include <QSqlTableModel>
 
-class TableModel final : public QSqlTableModel {
+class TableModel : public QSqlTableModel {
   Q_OBJECT
 
 public:

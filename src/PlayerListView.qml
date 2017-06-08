@@ -12,7 +12,7 @@ ListView {
   rightMargin: 0
   spacing: 4
 
-  model: playerModel
+  model: players
   delegate: ItemDelegate {
     text: model.nick
     width: listView.width - listView.leftMargin - listView.rightMargin
