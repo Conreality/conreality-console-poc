@@ -1,6 +1,6 @@
 /* This is free and unencumbered software released into the public domain. */
 
-#include <QtGlobal> /* for qUtf8Printable() */
+#include <QtGlobal> /* for qDebug(), qFatal(), qUtf8Printable() */
 #include <QApplication>
 #include <QProcessEnvironment>
 #include <QQmlApplicationEngine>
@@ -10,6 +10,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
+#include "ChatController.h"
 #include "TableModel.h"
 
 static void
@@ -49,7 +50,7 @@ main(int argc, char* argv[]) {
     static_cast<void(QSqlDriver::*)(const QString&, QSqlDriver::NotificationSource, const QVariant&)>(&QSqlDriver::notification),
     [](const QString& name, QSqlDriver::NotificationSource /*source*/, const QVariant& payload) {
 
-    qDebug("NOTIFY %s, %s", qUtf8Printable(name), qUtf8Printable(payload.toString()));
+    qDebug("NOTIFY %s, %s", qUtf8Printable(name), qUtf8Printable(payload.toString())); // DEBUG
     // TODO
   });
   db.driver()->subscribeToNotification("event");
@@ -60,6 +61,9 @@ main(int argc, char* argv[]) {
 
   TableModel playerModel{"public.object_player"};
   rootContext->setContextProperty("playerModel", &playerModel);
+
+  ChatController chat;
+  rootContext->setContextProperty("chat", &chat);
 
   engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
   if (engine.rootObjects().isEmpty()) {

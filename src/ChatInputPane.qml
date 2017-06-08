@@ -17,6 +17,7 @@ Pane {
 
         placeholderText: qsTr("Type your message here")
         wrapMode: TextArea.Wrap
+        focus: true
       }
 
       ScrollBar.vertical: ScrollBar { }
@@ -29,6 +30,12 @@ Pane {
 
       text: qsTr("Send Message")
       enabled: messageField.length > 0
+
+      onClicked: {
+        chat.sendMessage(messageField.text)
+        messageField.clear()
+        messageField.forceActiveFocus()
+      }
     }
   }
 }

@@ -9,6 +9,7 @@ QT += sql
 CONFIG += c++11
 
 SOURCES += main.cpp \
+    ChatController.cpp \
     TableModel.cpp
 
 RESOURCES += Conreality.qrc ../etc/icons.qrc
@@ -36,4 +37,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    ChatController.h \
     TableModel.h

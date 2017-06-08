@@ -14,7 +14,7 @@ ListView {
 
   model: playerModel
   delegate: ItemDelegate {
-    text: model.name
+    text: model.nick
     width: listView.width - listView.leftMargin - listView.rightMargin
     height: avatar.implicitHeight
     leftPadding: avatar.implicitWidth + 16
