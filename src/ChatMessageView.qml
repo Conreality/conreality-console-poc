@@ -7,17 +7,13 @@ ListView {
 
   displayMarginBeginning: 40
   displayMarginEnd: 40
-  //verticalLayoutDirection: ListView.BottomToTop
+  verticalLayoutDirection: ListView.BottomToTop
   spacing: 12
 
-/*
-  model: ListModel { // newest messages first
-    ListElement { body: "Pong"; timestamp: 1494593814 }
-    //ListElement { from: "Bob"; body: "Ping"; timestamp: 1494593814 }
-    ListElement { from: "Alice"; body: "Ping"; timestamp: 1494593814 }
-  }
-*/
   model: chat
+
+  Component.onCompleted: positionViewAtBeginning()
+  onCountChanged: positionViewAtBeginning()
 
   delegate: Column {
     readonly property bool sentByMe: model.sender === "00000000-0000-0000-0000-000000000000" // FIXME

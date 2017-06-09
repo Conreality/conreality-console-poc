@@ -16,6 +16,8 @@ void
 ChatController::sendMessage(const QString& text) {
   qDebug("chat.sendMessage(\"%s\")", qUtf8Printable(text)); // DEBUG
 
+  //beginResetModel();
+
   QSqlQuery sql_query;
   sql_query.prepare("SELECT public.message_send(session_user, ?)");
   sql_query.bindValue(0, text);
@@ -24,4 +26,8 @@ ChatController::sendMessage(const QString& text) {
   if (error.isValid()) {
     qFatal("PostgreSQL: %s.", qUtf8Printable(error.text()));
   }
+
+  //endResetModel();
+  emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1));
+  select();
 }
