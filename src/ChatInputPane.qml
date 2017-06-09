@@ -18,6 +18,13 @@ Pane {
         placeholderText: qsTr("Type your message here")
         wrapMode: TextArea.Wrap
         focus: true
+
+        Keys.enabled: true
+        Keys.priority: Keys.BeforeItem
+        Keys.onEscapePressed: {
+          event.accepted = true
+          clear()
+        }
       }
 
       ScrollBar.vertical: ScrollBar { }
