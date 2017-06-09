@@ -22,6 +22,8 @@ BEGIN
   EXECUTE format('GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA %I TO %I', current_schema, player_uuid);
   EXECUTE format('GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA %I TO %I', current_schema, player_uuid);
   EXECUTE format('GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA %I TO %I', current_schema, player_uuid);
+  EXECUTE format('GRANT USAGE ON SCHEMA %I TO %I', 'pllua', player_uuid);
+  EXECUTE format('GRANT SELECT ON TABLE %I.%I TO %I', 'pllua', 'init', player_uuid);
   INSERT INTO public.object (uuid, type) VALUES (player_uuid, 'player');
   INSERT INTO public.player (uuid, nick) VALUES (player_uuid, player_nick);
 END;
@@ -31,6 +33,8 @@ CREATE FUNCTION public.player_deregister(player_uuid uuid) RETURNS void AS $$
 BEGIN
   DELETE FROM public.player p WHERE p.uuid = player_uuid;
   DELETE FROM public.object o WHERE o.uuid = player_uuid;
+  EXECUTE format('REVOKE SELECT ON TABLE %I.%I FROM %I', 'pllua', 'init', player_uuid);
+  EXECUTE format('REVOKE USAGE ON SCHEMA %I FROM %I', 'pllua', player_uuid);
   EXECUTE format('REVOKE EXECUTE ON ALL FUNCTIONS IN SCHEMA %I FROM %I', current_schema, player_uuid);
   EXECUTE format('REVOKE USAGE, SELECT ON ALL SEQUENCES IN SCHEMA %I FROM %I', current_schema, player_uuid);
   EXECUTE format('REVOKE SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA %I FROM %I', current_schema, player_uuid);
