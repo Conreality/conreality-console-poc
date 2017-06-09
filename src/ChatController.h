@@ -2,14 +2,14 @@
 
 #pragma once
 
-#include <QObject>
+#include "TableModel.h"
 
-class ChatController final : public QObject {
+class ChatController final : public TableModel {
   Q_OBJECT
 
 public:
   explicit ChatController(QObject* parent = nullptr)
-    : QObject(parent) {}
+    : TableModel("public.message", parent) {}
 
 signals:
 

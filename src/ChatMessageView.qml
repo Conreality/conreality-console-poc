@@ -7,18 +7,20 @@ ListView {
 
   displayMarginBeginning: 40
   displayMarginEnd: 40
-  verticalLayoutDirection: ListView.BottomToTop
+  //verticalLayoutDirection: ListView.BottomToTop
   spacing: 12
 
+/*
   model: ListModel { // newest messages first
-    id: messageList
     ListElement { body: "Pong"; timestamp: 1494593814 }
     //ListElement { from: "Bob"; body: "Ping"; timestamp: 1494593814 }
     ListElement { from: "Alice"; body: "Ping"; timestamp: 1494593814 }
   }
+*/
+  model: chat
 
   delegate: Column {
-    readonly property bool sentByMe: model.from === undefined
+    readonly property bool sentByMe: model.sender === "00000000-0000-0000-0000-000000000000" // FIXME
 
     anchors.right: sentByMe ? parent.right : undefined
     spacing: 6
@@ -33,8 +35,8 @@ ListView {
         id: avatar
         source: "qrc:/icons/google/ic_face_white_48px.svg" // TODO: use player avatar
         sourceSize: Qt.size(48, 48)
-        width: height
-        height: parent.height
+        width: 48 //height
+        height: 48 //parent.height
         visible: !sentByMe
       }
 
@@ -51,7 +53,7 @@ ListView {
           anchors.margins: 12
           wrapMode: Label.Wrap
 
-          text: model.body
+          text: model.text
           color: sentByMe ? "black" : "white"
         }
       }
@@ -59,7 +61,7 @@ ListView {
 
     Label {
       anchors.right: sentByMe ? parent.right : undefined
-      text: Qt.formatDateTime(new Date(model.timestamp * 1000), "d MMM hh:mm")
+      text: model.timestamp //Qt.formatDateTime(new Date(model.timestamp * 1000), "d MMM hh:mm")
       color: "lightgrey"
     }
   }
