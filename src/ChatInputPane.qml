@@ -25,6 +25,12 @@ Pane {
           event.accepted = true
           clear()
         }
+        Keys.onReturnPressed: {
+          event.accepted = true
+          chat.sendMessage(messageField.text)
+          clear()
+          forceActiveFocus()
+        }
       }
 
       ScrollBar.vertical: ScrollBar { }
