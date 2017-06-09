@@ -62,7 +62,7 @@ ListView {
 
     Label {
       anchors.right: sentByMe ? parent.right : undefined
-      text: model.timestamp //Qt.formatDateTime(new Date(model.timestamp * 1000), "d MMM hh:mm")
+      text: Qt.formatDateTime(model.timestamp, "d MMM HH:mm:ss")
       color: "lightgrey"
 
       //ToolTip.visible: hovered
