@@ -7,6 +7,11 @@
 #include <QSqlQuery>
 #include <QVariant>
 
+ChatController::ChatController(QObject* const parent)
+  : TableModel("public.message", parent) {
+  select();
+}
+
 void
 ChatController::sendMessage(const QString& text) {
   qDebug("chat.sendMessage(\"%s\")", qUtf8Printable(text)); // DEBUG

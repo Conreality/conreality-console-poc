@@ -8,8 +8,7 @@ class PlayerController final : public TableModel {
   Q_OBJECT
 
 public:
-  explicit PlayerController(QObject* parent = nullptr)
-    : TableModel("public.object_player", parent) {}
+  explicit PlayerController(QObject* parent = nullptr);
 
 signals:
 

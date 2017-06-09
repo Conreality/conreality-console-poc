@@ -11,7 +11,6 @@ TableModel::TableModel(const char* const tableName,
 
   setTable(tableName);
   generateRoleNames();
-  select();
 }
 
 void

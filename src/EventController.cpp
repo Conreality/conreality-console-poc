@@ -6,3 +6,8 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QVariant>
+
+EventController::EventController(QObject* const parent)
+  : TableModel("public.event", parent) {
+  select();
+}

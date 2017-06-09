@@ -6,3 +6,8 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QVariant>
+
+PlayerController::PlayerController(QObject* const parent)
+  : TableModel("public.object_player", parent) {
+  select();
+}

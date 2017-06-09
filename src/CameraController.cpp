@@ -6,3 +6,8 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QVariant>
+
+CameraController::CameraController(QObject* const parent)
+  : TableModel("public.object_camera", parent) {
+  select();
+}

@@ -8,8 +8,7 @@ class EventController final : public TableModel {
   Q_OBJECT
 
 public:
-  explicit EventController(QObject* parent = nullptr)
-    : TableModel("public.event", parent) {}
+  explicit EventController(QObject* parent = nullptr);
 
 signals:
 

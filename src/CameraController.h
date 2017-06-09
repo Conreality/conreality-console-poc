@@ -8,8 +8,7 @@ class CameraController final : public TableModel {
   Q_OBJECT
 
 public:
-  explicit CameraController(QObject* parent = nullptr)
-    : TableModel("public.object_camera", parent) {}
+  explicit CameraController(QObject* parent = nullptr);
 
 signals:
 

@@ -8,8 +8,7 @@ class ChatController final : public TableModel {
   Q_OBJECT
 
 public:
-  explicit ChatController(QObject* parent = nullptr)
-    : TableModel("public.message", parent) {}
+  explicit ChatController(QObject* parent = nullptr);
 
 signals:
 
