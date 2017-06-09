@@ -37,5 +37,12 @@ Pane {
         messageField.forceActiveFocus()
       }
     }
+
+  }
+
+  onVisibleChanged: {
+    if (visible) {
+      messageField.forceActiveFocus()
+    }
   }
 }
