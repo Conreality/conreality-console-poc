@@ -48,16 +48,6 @@ main(int argc, char* argv[]) {
     execute_or_die("SELECT public.session_terminate()");
   });
 
-  app.connect(db.driver(),
-    static_cast<void(QSqlDriver::*)(const QString&, QSqlDriver::NotificationSource, const QVariant&)>(&QSqlDriver::notification),
-    [](const QString& name, QSqlDriver::NotificationSource /*source*/, const QVariant& payload) {
-
-    qDebug("NOTIFY %s, %s", qUtf8Printable(name), qUtf8Printable(payload.toString())); // DEBUG
-    // TODO
-  });
-  db.driver()->subscribeToNotification("event");
-  db.driver()->subscribeToNotification("message");
-
   QQmlApplicationEngine engine;
   auto rootContext = engine.rootContext();
 
@@ -72,6 +62,25 @@ main(int argc, char* argv[]) {
 
   PlayerController players;
   rootContext->setContextProperty("players", &players);
+
+  app.connect(db.driver(),
+    static_cast<void(QSqlDriver::*)(const QString&, QSqlDriver::NotificationSource, const QVariant&)>(&QSqlDriver::notification),
+    [&](const QString& name, QSqlDriver::NotificationSource /*source*/, const QVariant& payload) {
+
+    qDebug("NOTIFY %s, %s", qUtf8Printable(name), qUtf8Printable(payload.toString())); // DEBUG
+
+    if (name.compare("event") == 0) {
+      events.refresh();
+      return;
+    }
+
+    if (name.compare("message") == 0) {
+      chat.refresh();
+      return;
+    }
+  });
+  db.driver()->subscribeToNotification("event");
+  db.driver()->subscribeToNotification("message");
 
   engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
   if (engine.rootObjects().isEmpty()) {

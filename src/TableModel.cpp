@@ -38,3 +38,11 @@ TableModel::data(const QModelIndex& index,
   const QModelIndex modelIndex = this->index(index.row(), columnIndex);
   return QSqlTableModel::data(modelIndex, Qt::DisplayRole);
 }
+
+void
+TableModel::refresh() {
+  /* Note: this is seemingly not actually needed: */
+  //emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1));
+
+  select();
+}

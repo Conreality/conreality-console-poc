@@ -9,5 +9,6 @@
 
 EventController::EventController(QObject* const parent)
   : TableModel("public.event", parent) {
+  setSort(0, Qt::DescendingOrder);
   select();
 }

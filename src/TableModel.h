@@ -25,6 +25,8 @@ public:
     return _roleNames;
   }
 
+  void refresh();
+
 private:
   QHash<int, QByteArray> _roleNames;
 };
