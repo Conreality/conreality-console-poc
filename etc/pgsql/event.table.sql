@@ -4,7 +4,7 @@ CREATE TABLE public.event (
   -- The event's sequential identifier.
   id        bigserial NOT NULL PRIMARY KEY,
   -- The event's timestamp (in Zulu time).
-  timestamp timestamp WITHOUT TIME ZONE NOT NULL DEFAULT (now() AT TIME ZONE 'UTC'),
+  timestamp timestamp WITH TIME ZONE NOT NULL DEFAULT now(),
   -- The subject of the predicate.
   subject   uuid NOT NULL REFERENCES public.object ON DELETE CASCADE,
   -- The event's predicate (an action or verb).
