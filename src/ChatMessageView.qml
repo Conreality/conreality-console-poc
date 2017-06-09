@@ -34,6 +34,11 @@ ListView {
         width: 48 //height
         height: 48 //parent.height
         visible: !sentByMe
+
+        //ToolTip.visible: hovered
+        //ToolTip.delay: 1000
+        //ToolTip.timeout: 2500
+        //ToolTip.text: model.sender
       }
 
       Rectangle {
@@ -59,6 +64,11 @@ ListView {
       anchors.right: sentByMe ? parent.right : undefined
       text: model.timestamp //Qt.formatDateTime(new Date(model.timestamp * 1000), "d MMM hh:mm")
       color: "lightgrey"
+
+      //ToolTip.visible: hovered
+      //ToolTip.delay: 1000
+      //ToolTip.timeout: 2500
+      //ToolTip.text: model.timestamp // ISO-8601 format
     }
   }
 
