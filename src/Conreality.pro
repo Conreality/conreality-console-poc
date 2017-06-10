@@ -12,10 +12,13 @@ SOURCES += main.cpp      \
     CameraController.cpp \
     ChatController.cpp   \
     EventController.cpp  \
+    ImageProvider.cpp    \
     PlayerController.cpp \
     TableModel.cpp
 
 RESOURCES += Conreality.qrc ../etc/icons.qrc
+
+#ICON = ../etc/icons/app.icns
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -43,5 +46,6 @@ HEADERS +=             \
     CameraController.h \
     ChatController.h   \
     EventController.h  \
+    ImageProvider.h    \
     PlayerController.h \
     TableModel.h

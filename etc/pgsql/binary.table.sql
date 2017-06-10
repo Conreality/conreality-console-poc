@@ -3,8 +3,10 @@ DROP TABLE IF EXISTS public.binary CASCADE;
 DROP TYPE IF EXISTS public.binary_type RESTRICT;
 
 CREATE TYPE public.binary_type AS ENUM (
+  'image/gif',
   'image/jpeg',
-  'image/png'
+  'image/png',
+  'image/svg+xml'
 );
 
 CREATE TABLE public.binary (

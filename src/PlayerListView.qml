@@ -21,16 +21,9 @@ ListView {
 
     Image {
       id: avatar
-      source: "qrc:/icons/google/ic_face_white_48px.svg"
+      source: model.avatar ? "image://binary/" + model.avatar : "qrc:/icons/google/ic_face_white_48px.svg"
       sourceSize: Qt.size(48, 48)
       width: 48; height: 48
-      visible: false
-    }
-
-    ColorOverlay {
-      anchors.fill: avatar
-      source: avatar
-      color: "#ffffff"
     }
   }
 }
