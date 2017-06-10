@@ -10,7 +10,7 @@ CREATE TABLE public.asset (
   -- The asset's IPv4/IPv6 address.
   ip_addr  inet NULL CHECK ((family(ip_addr) = 4 AND masklen(ip_addr) = 32) OR (family(ip_addr) = 6 AND masklen(ip_addr) = 128)),
   -- The asset's avatar image.
-  avatar   bytea NULL,
+  avatar   bigint NULL REFERENCES public.binary ON DELETE SET NULL,
   -- The asset's deployed software version.
   version  varchar(5) NULL
 );

@@ -2,6 +2,7 @@
 cat extensions.sql;    echo
 
 # dependency order:
+cat binary.table.sql;  echo
 cat theater.table.sql; echo
 cat group.table.sql;   echo
 cat object.table.sql;  echo

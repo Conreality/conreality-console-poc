@@ -10,5 +10,5 @@ CREATE TABLE public.message (
   -- The message's contents as text.
   text      text NULL,
   -- The message's contents as audio.
-  audio     bytea NULL
+  audio     bigint NULL REFERENCES public.binary ON DELETE SET NULL
 );
