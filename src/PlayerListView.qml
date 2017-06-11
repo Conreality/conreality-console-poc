@@ -21,9 +21,9 @@ ListView {
 
     Image {
       id: avatar
-      source: model.avatar ? "image://binary/" + model.avatar : "qrc:/icons/google/ic_face_white_48px.svg"
-      sourceSize: Qt.size(48, 48)
       width: 48; height: 48
+      sourceSize: Qt.size(48, 48)
+      source: model.avatar ? "image://binary/" + model.avatar : "qrc:/icons/google/ic_face_white_48px.svg"
     }
   }
 

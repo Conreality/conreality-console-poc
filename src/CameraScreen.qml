@@ -5,12 +5,10 @@ import QtQuick.Layouts 1.3
 Page {
 
   RowLayout {
-    id: cameraLayout
     anchors.fill: parent
     spacing: 0
 
     Frame {
-      id: imageFrame
       Layout.fillWidth: true
       Layout.fillHeight: true
 
@@ -21,14 +19,12 @@ Page {
     }
 
     Frame {
-      id: feedFrame
-      Layout.minimumWidth: 160
+      Layout.minimumWidth: 240
       Layout.preferredWidth: parent.width * 0.20
       Layout.fillHeight: true
 
-      Rectangle { // TODO
+      CameraListView {
         anchors.fill: parent
-        color: "red"
       }
     }
   }

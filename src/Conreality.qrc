@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>AboutDialog.qml</file>
+        <file>CameraListView.qml</file>
         <file>CameraScreen.qml</file>
         <file>ChatInputPane.qml</file>
         <file>ChatMessageView.qml</file>

@@ -16,8 +16,6 @@ Page {
         anchors.fill: parent
 
         ChatMessageView {
-          id: messageView
-
           Layout.fillWidth: true
           Layout.fillHeight: true
           Layout.margins: inputPane.leftPadding
@@ -40,8 +38,6 @@ Page {
       Layout.fillHeight: true
 
       PlayerListView {
-        id: listView
-
         anchors.fill: parent
       }
     }
