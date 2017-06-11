@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS public.message RESTRICT;
+DROP TABLE IF EXISTS public.message CASCADE;
 
 CREATE TABLE public.message (
   -- The message's sequential identifier.

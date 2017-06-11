@@ -22,4 +22,5 @@ cat session.procs.sql; echo
 cat target.table.sql;  echo
 
 # dependency order:
+cat message.views.sql; echo
 cat object.views.sql;  echo

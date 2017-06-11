@@ -8,7 +8,7 @@
 #include <QVariant>
 
 ChatController::ChatController(QObject* const parent)
-  : TableModel("public.message", parent) {
+  : TableModel("public.message_with_avatar", parent) {
   setSort(0, Qt::DescendingOrder);
   select();
 }

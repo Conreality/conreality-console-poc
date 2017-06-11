@@ -29,7 +29,7 @@ ListView {
 
       Image {
         id: avatar
-        source: "qrc:/icons/google/ic_face_white_48px.svg" // TODO: use player avatar
+        source: model.avatar ? "image://binary/" + model.avatar : "qrc:/icons/google/ic_face_white_48px.svg"
         sourceSize: Qt.size(48, 48)
         width: 48 //height
         height: 48 //parent.height
