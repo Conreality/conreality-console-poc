@@ -26,4 +26,6 @@ ListView {
       width: 48; height: 48
     }
   }
+
+  ScrollIndicator.vertical: ScrollIndicator { }
 }
