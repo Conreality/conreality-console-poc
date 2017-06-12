@@ -3,11 +3,14 @@
 #pragma once
 
 #include <QQuickImageProvider>
+#include <QSqlQuery>
 
 class BinaryImageProvider : public QQuickImageProvider {
 public:
-  explicit BinaryImageProvider()
-    : QQuickImageProvider(QQmlImageProviderBase::Pixmap) {}
+  explicit BinaryImageProvider();
 
   QPixmap requestPixmap(const QString& id, QSize* size, const QSize& requestedSize) override;
+
+private:
+  QSqlQuery _query;
 };

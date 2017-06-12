@@ -7,26 +7,31 @@
 #include <QSqlQuery>
 #include <QVariant>
 
+BinaryImageProvider::BinaryImageProvider()
+  : QQuickImageProvider{QQmlImageProviderBase::Pixmap} {
+
+  _query.setForwardOnly(true);
+  _query.prepare("SELECT data, type FROM public.binary WHERE id = ? LIMIT 1");
+}
+
 QPixmap
 BinaryImageProvider::requestPixmap(const QString& id,
                                    QSize* const size,
                                    const QSize& requestedSize) {
 
-  QSqlQuery sql_query;
-  sql_query.prepare("SELECT data, type FROM public.binary WHERE id = ? LIMIT 1");
-  sql_query.bindValue(0, id.toInt());
-  sql_query.exec();
+  _query.bindValue(0, id.toInt());
+  _query.exec();
 
-  const auto error = sql_query.lastError();
+  const auto error = _query.lastError();
   if (error.isValid()) {
     qFatal("PostgreSQL: %s.", qUtf8Printable(error.text()));
   }
 
   QPixmap original, result;
 
-  if (sql_query.next()) {
-    original.loadFromData(sql_query.value(0).toByteArray(),
-      qUtf8Printable(sql_query.value(1).toString()));
+  if (_query.first()) {
+    original.loadFromData(_query.value(0).toByteArray(),
+      qUtf8Printable(_query.value(1).toString()));
   }
   else {
     original = QPixmap(requestedSize.width(), requestedSize.height());
@@ -42,6 +47,8 @@ BinaryImageProvider::requestPixmap(const QString& id,
   else {
     result = original;
   }
+
+  _query.finish();
 
   return result;
 }
