@@ -7,40 +7,37 @@
 #include <QSqlQuery>
 #include <QVariant>
 
+CameraImageProvider::CameraImageProvider()
+  : ImageProvider{} {
+
+  query().prepare("SELECT data FROM public.camera_frame WHERE uuid = ?::uuid LIMIT 1");
+}
+
+QVariant
+CameraImageProvider::parseID(const QString& id) const {
+  return id;
+}
+
 QPixmap
-CameraImageProvider::requestPixmap(const QString& id,
-                                   QSize* const size,
-                                   const QSize& requestedSize) {
+CameraImageProvider::makeEmpty(const QSize& size) const {
+  QPixmap result{size.width(), size.height()};
+  result.fill(QColor("black").rgba());
+  return result;
+}
 
-  QSqlQuery sql_query;
-  sql_query.prepare("SELECT data FROM public.camera_frame WHERE uuid = ?::uuid LIMIT 1");
-  sql_query.bindValue(0, id);
-  sql_query.exec();
+QPixmap
+CameraImageProvider::makeEmpty(const QVariant& /*key*/) const {
+  QPixmap result{640, 480}; // TODO
+  result.fill(QColor("black").rgba());
+  return result;
+}
 
-  const auto error = sql_query.lastError();
-  if (error.isValid()) {
-    qFatal("PostgreSQL: %s.", qUtf8Printable(error.text()));
+QPixmap
+CameraImageProvider::loadFromQuery(const QSqlQuery& query) const {
+  QPixmap result;
+  const auto data = query.value(0);
+  if (!data.isNull() && data.isValid()) {
+    result.loadFromData(data.toByteArray(), "image/png");
   }
-
-  QPixmap original, result;
-
-  if (sql_query.next()) {
-    original.loadFromData(sql_query.value(0).toByteArray(), "image/png");
-  }
-  else {
-    original = QPixmap(requestedSize.width(), requestedSize.height());
-    original.fill(QColor("black").rgba());
-  }
-
-  if (size) *size = original.size();
-
-  if (requestedSize.isValid()) {
-    result = original.scaled(requestedSize.width(), requestedSize.height(),
-      Qt::KeepAspectRatio, Qt::SmoothTransformation);
-  }
-  else {
-    result = original;
-  }
-
   return result;
 }

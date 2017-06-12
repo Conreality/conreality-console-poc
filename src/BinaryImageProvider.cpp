@@ -8,47 +8,35 @@
 #include <QVariant>
 
 BinaryImageProvider::BinaryImageProvider()
-  : QQuickImageProvider{QQmlImageProviderBase::Pixmap} {
+  : ImageProvider{} {
 
-  _query.setForwardOnly(true);
-  _query.prepare("SELECT data, type FROM public.binary WHERE id = ? LIMIT 1");
+  query().prepare("SELECT data, type FROM public.binary WHERE id = ? LIMIT 1");
+}
+
+QVariant
+BinaryImageProvider::parseID(const QString& id) const {
+  return id.toInt();
 }
 
 QPixmap
-BinaryImageProvider::requestPixmap(const QString& id,
-                                   QSize* const size,
-                                   const QSize& requestedSize) {
+BinaryImageProvider::makeEmpty(const QSize& size) const {
+  QPixmap result{size.width(), size.height()};
+  result.fill(QColor("white").rgba());
+  return result;
+}
 
-  _query.bindValue(0, id.toInt());
-  _query.exec();
+QPixmap
+BinaryImageProvider::makeEmpty(const QVariant& /*key*/) const {
+  return {};
+}
 
-  const auto error = _query.lastError();
-  if (error.isValid()) {
-    qFatal("PostgreSQL: %s.", qUtf8Printable(error.text()));
+QPixmap
+BinaryImageProvider::loadFromQuery(const QSqlQuery& query) const {
+  QPixmap result;
+  const auto data = query.value(0);
+  if (!data.isNull() && data.isValid()) {
+    result.loadFromData(data.toByteArray(),
+      qUtf8Printable(query.value(1).toString()));
   }
-
-  QPixmap original, result;
-
-  if (_query.first()) {
-    original.loadFromData(_query.value(0).toByteArray(),
-      qUtf8Printable(_query.value(1).toString()));
-  }
-  else {
-    original = QPixmap(requestedSize.width(), requestedSize.height());
-    original.fill(QColor("white").rgba());
-  }
-
-  if (size) *size = original.size();
-
-  if (requestedSize.isValid()) {
-    result = original.scaled(requestedSize.width(), requestedSize.height(),
-      Qt::KeepAspectRatio, Qt::SmoothTransformation);
-  }
-  else {
-    result = original;
-  }
-
-  _query.finish();
-
   return result;
 }

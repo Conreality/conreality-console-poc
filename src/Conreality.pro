@@ -14,6 +14,7 @@ SOURCES += main.cpp         \
     CameraImageProvider.cpp \
     ChatController.cpp      \
     EventController.cpp     \
+    ImageProvider.cpp       \
     PlayerController.cpp    \
     TableModel.cpp
 
@@ -49,5 +50,6 @@ HEADERS +=                \
     CameraImageProvider.h \
     ChatController.h      \
     EventController.h     \
+    ImageProvider.h       \
     PlayerController.h    \
     TableModel.h
