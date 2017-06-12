@@ -24,7 +24,7 @@ BEGIN
   EXECUTE format('GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA %I TO %I', current_schema, player_uuid);
   EXECUTE format('GRANT USAGE ON SCHEMA %I TO %I', 'pllua', player_uuid);
   EXECUTE format('GRANT SELECT ON TABLE %I.%I TO %I', 'pllua', 'init', player_uuid);
-  INSERT INTO public.object (uuid, type) VALUES (player_uuid, 'player');
+  INSERT INTO public.object (uuid, type, label) VALUES (player_uuid, 'player', player_nick);
   INSERT INTO public.player (uuid, nick) VALUES (player_uuid, player_nick);
 END;
 $$ LANGUAGE plpgsql VOLATILE PARALLEL UNSAFE;

@@ -10,10 +10,11 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
+#include "BinaryImageProvider.h"
 #include "CameraController.h"
+#include "CameraImageProvider.h"
 #include "ChatController.h"
 #include "EventController.h"
-#include "ImageProvider.h"
 #include "PlayerController.h"
 
 static void
@@ -52,7 +53,8 @@ main(int argc, char* argv[]) {
   QQmlApplicationEngine engine;
   auto rootContext = engine.rootContext();
 
-  engine.addImageProvider("binary", new ImageProvider);
+  engine.addImageProvider("binary", new BinaryImageProvider);
+  engine.addImageProvider("camera", new CameraImageProvider);
 
   CameraController cameras;
   rootContext->setContextProperty("cameras", &cameras);

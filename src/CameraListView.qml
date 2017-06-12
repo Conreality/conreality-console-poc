@@ -16,7 +16,7 @@ ListView {
   //keyNavigationEnabled: true // https://bugreports.qt.io/browse/QTBUG-57621
   highlightFollowsCurrentItem: true
 
-  model: players
+  model: cameras
 
   delegate: ItemDelegate {
     width: listView.width - listView.leftMargin - listView.rightMargin
@@ -32,7 +32,7 @@ ListView {
         anchors.topMargin: 8
         width: 160; height: 160
         sourceSize: Qt.size(160, 160)
-        source: model.avatar ? "image://binary/" + model.avatar : "qrc:/icons/google/ic_face_white_48px.svg" // TODO
+        source: "image://camera/" + model.uuid
       }
 
       Label {
@@ -41,7 +41,7 @@ ListView {
         anchors.top: frame.bottom
         anchors.topMargin: 8
         anchors.bottomMargin: 8
-        text: model.nick // TODO
+        text: model.label
       }
     }
 

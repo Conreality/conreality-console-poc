@@ -4,9 +4,9 @@
 
 #include <QQuickImageProvider>
 
-class ImageProvider : public QQuickImageProvider {
+class BinaryImageProvider : public QQuickImageProvider {
 public:
-  explicit ImageProvider()
+  explicit BinaryImageProvider()
     : QQuickImageProvider(QQmlImageProviderBase::Pixmap) {}
 
   QPixmap requestPixmap(const QString& id, QSize* size, const QSize& requestedSize) override;

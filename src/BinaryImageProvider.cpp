@@ -1,6 +1,6 @@
 /* This is free and unencumbered software released into the public domain. */
 
-#include "ImageProvider.h"
+#include "BinaryImageProvider.h"
 
 #include <QtGlobal> /* for qDebug(), qFatal(), qUtf8Printable() */
 #include <QSqlError>
@@ -8,9 +8,9 @@
 #include <QVariant>
 
 QPixmap
-ImageProvider::requestPixmap(const QString& id,
-                             QSize* const size,
-                             const QSize& requestedSize) {
+BinaryImageProvider::requestPixmap(const QString& id,
+                                   QSize* const size,
+                                   const QSize& requestedSize) {
 
   QSqlQuery sql_query;
   sql_query.prepare("SELECT data, type FROM public.binary WHERE id = ? LIMIT 1");

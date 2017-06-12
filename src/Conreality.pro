@@ -8,12 +8,13 @@ QT += sql
 
 CONFIG += c++11
 
-SOURCES += main.cpp      \
-    CameraController.cpp \
-    ChatController.cpp   \
-    EventController.cpp  \
-    ImageProvider.cpp    \
-    PlayerController.cpp \
+SOURCES += main.cpp         \
+    BinaryImageProvider.cpp \
+    CameraController.cpp    \
+    CameraImageProvider.cpp \
+    ChatController.cpp      \
+    EventController.cpp     \
+    PlayerController.cpp    \
     TableModel.cpp
 
 RESOURCES += Conreality.qrc ../etc/icons.qrc
@@ -42,10 +43,11 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-HEADERS +=             \
-    CameraController.h \
-    ChatController.h   \
-    EventController.h  \
-    ImageProvider.h    \
-    PlayerController.h \
+HEADERS +=                \
+    BinaryImageProvider.h \
+    CameraController.h    \
+    CameraImageProvider.h \
+    ChatController.h      \
+    EventController.h     \
+    PlayerController.h    \
     TableModel.h
