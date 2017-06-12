@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS public.camera RESTRICT;
+DROP TABLE IF EXISTS public.camera CASCADE;
 
 CREATE TABLE public.camera (
   -- The camera's unique identifier.

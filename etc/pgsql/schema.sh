@@ -11,6 +11,7 @@ cat object.procs.sql;  echo
 # alphabetical order:
 cat asset.table.sql;   echo
 cat camera.table.sql;  echo
+cat camera_frame.table.sql; echo
 cat event.table.sql;   echo
 cat event.procs.sql;   echo
 cat message.table.sql; echo
