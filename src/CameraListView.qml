@@ -4,7 +4,8 @@ import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 
 ListView {
-  id: listView
+  signal selectionChanged(string uuid)
+
   anchors.fill: parent
   topMargin: 0
   leftMargin: 0
@@ -19,7 +20,7 @@ ListView {
   model: cameras
 
   delegate: ItemDelegate {
-    width: listView.width - listView.leftMargin - listView.rightMargin
+    width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
     height: frame.implicitHeight + label.implicitHeight + 8*3
 
     Item {
@@ -49,6 +50,7 @@ ListView {
     onClicked: {
       ListView.view.currentIndex = index
       ListView.view.forceActiveFocus()
+      ListView.view.selectionChanged(model.uuid)
     }
   }
 

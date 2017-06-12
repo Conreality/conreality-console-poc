@@ -12,9 +12,21 @@ Page {
       Layout.fillWidth: true
       Layout.fillHeight: true
 
-      BusyIndicator {
-        running: true // TODO
+      Image {
+        id: cameraFrame
         anchors.centerIn: parent
+        //source: undefined
+        visible: false
+
+        onStatusChanged: {
+          loadingIndicator.running = (this.status === Image.Loading)
+        }
+      }
+
+      BusyIndicator {
+        id: loadingIndicator
+        anchors.centerIn: parent
+        running: false
       }
     }
 
@@ -24,7 +36,20 @@ Page {
       Layout.fillHeight: true
 
       CameraListView {
+        id: cameraList
         anchors.fill: parent
+
+        onSelectionChanged: {
+          if (uuid) {
+            console.log("Loading camera frame: " + uuid) // DEBUG
+            cameraFrame.visible = true
+            cameraFrame.source = "image://camera/" + uuid
+          }
+          else {
+            cameraFrame.visible = false
+            //cameraFrame.source = null
+          }
+        }
       }
     }
   }
