@@ -12,10 +12,12 @@ Page {
       Layout.fillWidth: true
       Layout.fillHeight: true
 
+      // TODO: remove margins
       Image {
         id: cameraFrame
-        anchors.centerIn: parent
+        anchors.fill: parent
         //source: undefined
+        fillMode: Image.PreserveAspectFit
         visible: false
 
         onStatusChanged: {

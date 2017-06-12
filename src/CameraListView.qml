@@ -31,8 +31,8 @@ ListView {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 8
-        width: 160; height: 160
-        sourceSize: Qt.size(160, 160)
+        width: 160
+        fillMode: Image.PreserveAspectFit
         source: "image://camera/" + model.uuid
       }
 
