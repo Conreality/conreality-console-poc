@@ -12,7 +12,12 @@ ListView {
   rightMargin: 0
   spacing: 4
 
+  focus: true
+  //keyNavigationEnabled: true // https://bugreports.qt.io/browse/QTBUG-57621
+  highlightFollowsCurrentItem: true
+
   model: players
+
   delegate: ItemDelegate {
     width: listView.width - listView.leftMargin - listView.rightMargin
     height: frame.implicitHeight + label.implicitHeight + 8*3
@@ -41,7 +46,10 @@ ListView {
     }
 
     highlighted: ListView.isCurrentItem
-    //onClicked: console.log("clicked:", model) // TODO
+    onClicked: {
+      ListView.view.currentIndex = index
+      ListView.view.forceActiveFocus()
+    }
   }
 
   ScrollIndicator.vertical: ScrollIndicator { }
