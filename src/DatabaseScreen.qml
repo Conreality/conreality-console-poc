@@ -6,12 +6,10 @@ import QtGraphicalEffects 1.0
 Page {
 
   RowLayout {
-    id: databaseLayout
     anchors.fill: parent
     spacing: 0
 
     Frame {
-      id: formFrame
       Layout.fillWidth: true
       Layout.fillHeight: true
 
@@ -22,13 +20,24 @@ Page {
     }
 
     Frame {
-      id: listFrame
       Layout.minimumWidth: 160
       Layout.preferredWidth: parent.width * 0.20
       Layout.fillHeight: true
 
       PlayerListView {
-        id: listView
+        anchors.fill: parent
+
+        onSelectionChanged: {
+          if (uuid) {
+            console.log("Loading player form: " + uuid) // DEBUG
+            //playerForm.visible = true
+            //playerForm.source = "image://binary/" + uuid
+          }
+          else {
+            //playerForm.visible = false
+            //playerForm.source = null
+          }
+        }
       }
     }
   }

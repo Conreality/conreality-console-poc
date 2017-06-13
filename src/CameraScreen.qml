@@ -38,7 +38,6 @@ Page {
       Layout.fillHeight: true
 
       CameraListView {
-        id: cameraList
         anchors.fill: parent
 
         onSelectionChanged: {
