@@ -14,3 +14,9 @@ CREATE TABLE public.asset (
   -- The asset's deployed software version.
   version  varchar(5) NULL
 );
+
+ALTER TABLE public.asset
+  ALTER COLUMN nick SET STORAGE PLAIN,
+  ALTER COLUMN name SET STORAGE PLAIN,
+  ALTER COLUMN ip_addr SET STORAGE PLAIN,
+  ALTER COLUMN version SET STORAGE PLAIN;
