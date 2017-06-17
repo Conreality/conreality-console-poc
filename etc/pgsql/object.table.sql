@@ -16,7 +16,7 @@ CREATE TABLE public.object (
   type        object_type NULL,
   -- The theater that the object is located in.
   theater     uuid NULL REFERENCES public.theater ON DELETE SET NULL,
-  -- The group, if any, that the object is located in.
+  -- The group, if any, that the object belongs to.
   "group"     uuid NULL REFERENCES public.group ON DELETE SET NULL,
   -- The object's designated label.
   label       varchar(31) NULL CHECK (label <> ''),
