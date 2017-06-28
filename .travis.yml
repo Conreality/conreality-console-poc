@@ -1,0 +1,16 @@
+# https://docs.travis-ci.com/user/languages/cpp/
+language: cpp
+dist: trusty
+sudo: required
+compiler: gcc
+addons:
+  apt:
+    sources:
+      - sourceline: ppa:beineri/opt-qt59-trusty
+    packages:
+      - qt59base
+before_script:
+  - qmake -v
+  - qmake -config release -spec linux-g++-64
+script:
+  - make
