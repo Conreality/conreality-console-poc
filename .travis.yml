@@ -1,4 +1,5 @@
 # https://docs.travis-ci.com/user/languages/cpp/
+# https://launchpad.net/~beineri/+archive/ubuntu/opt-qt59-trusty
 language: cpp
 dist: trusty
 sudo: required
