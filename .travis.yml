@@ -9,13 +9,15 @@ addons:
       - sourceline: ppa:beineri/opt-qt59-trusty
     packages:
       - qt59base
+      - qt593d
       - qt59declarative
+      - qt59location
       - qt59quickcontrols2
 install:
   - source /opt/qt59/bin/qt59-env.sh
-before_script:
-  - mkdir ./build && cd ./build
   - qmake -v
-  - qmake PREFIX=/usr ..
+before_script:
+  - mkdir -p build && cd build
+  - qmake PREFIX=/usr ../src
 script:
   - make
