@@ -8,7 +8,7 @@
 #include <QVariant>
 
 EventController::EventController(QObject* const parent)
-  : TableModel("public.event", parent) {
+  : TableModel("conreality.event", parent) {
   setSort(0, Qt::DescendingOrder);
   select();
 }

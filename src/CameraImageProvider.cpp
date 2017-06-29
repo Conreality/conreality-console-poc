@@ -10,7 +10,7 @@
 CameraImageProvider::CameraImageProvider()
   : ImageProvider{} {
 
-  query().prepare("SELECT data FROM public.camera_frame WHERE uuid = ?::uuid LIMIT 1");
+  query().prepare("SELECT data FROM conreality.camera_frame WHERE uuid = ?::uuid LIMIT 1");
 }
 
 QVariant

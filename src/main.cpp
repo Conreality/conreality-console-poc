@@ -43,11 +43,11 @@ main(int argc, char* argv[]) {
     return -1;
   }
 
-  execute_or_die("SELECT public.session_start()");
+  execute_or_die("SELECT conreality.session_start()");
   app.connect(&app, &QApplication::aboutToQuit, [&db] {
     db.driver()->unsubscribeFromNotification("message");
     db.driver()->unsubscribeFromNotification("event");
-    execute_or_die("SELECT public.session_terminate()");
+    execute_or_die("SELECT conreality.session_terminate()");
   });
 
   QQmlApplicationEngine engine;

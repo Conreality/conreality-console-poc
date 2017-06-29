@@ -8,6 +8,6 @@
 #include <QVariant>
 
 CameraController::CameraController(QObject* const parent)
-  : TableModel("public.object_camera", parent) {
+  : TableModel("conreality.camera_object", parent) {
   select();
 }

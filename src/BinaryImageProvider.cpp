@@ -10,7 +10,7 @@
 BinaryImageProvider::BinaryImageProvider()
   : ImageProvider{} {
 
-  query().prepare("SELECT data, type FROM public.binary WHERE id = ? LIMIT 1");
+  query().prepare("SELECT data, type FROM conreality.binary WHERE id = ? LIMIT 1");
 }
 
 QVariant

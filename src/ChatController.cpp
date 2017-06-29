@@ -8,7 +8,7 @@
 #include <QVariant>
 
 ChatController::ChatController(QObject* const parent)
-  : TableModel("public.message_with_avatar", parent) {
+  : TableModel("conreality.message_with_avatar", parent) {
   setSort(0, Qt::DescendingOrder);
   select();
 }
@@ -18,7 +18,7 @@ ChatController::sendMessage(const QString& text) {
   qDebug("chat.sendMessage(\"%s\")", qUtf8Printable(text)); // DEBUG
 
   QSqlQuery sql_query;
-  sql_query.prepare("SELECT public.message_send(session_user, ?)");
+  sql_query.prepare("SELECT conreality.message_send(session_user, ?)");
   sql_query.bindValue(0, text);
   sql_query.exec();
   const auto error = sql_query.lastError();

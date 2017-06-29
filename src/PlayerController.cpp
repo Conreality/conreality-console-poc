@@ -8,6 +8,6 @@
 #include <QVariant>
 
 PlayerController::PlayerController(QObject* const parent)
-  : TableModel("public.object_player", parent) {
+  : TableModel("conreality.player_object", parent) {
   select();
 }
